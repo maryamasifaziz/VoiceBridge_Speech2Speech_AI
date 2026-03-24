@@ -27,6 +27,10 @@ from typing import Dict, List, Optional, Tuple
 import streamlit as st
 from dotenv import load_dotenv
 
+# Sync st.secrets into env so load_dotenv() / os.getenv() work
+for key, val in st.secrets.items():
+    os.environ.setdefault(key, str(val))
+    
 load_dotenv()
 
 
